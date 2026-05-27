@@ -1,0 +1,6 @@
+region,bhk,area_sqft,floor,total_floors,age_years,furnishing,locality,parking,lift,metro_dist_km,price_inr,rent_inr
+Gurgaon,2,1100,5,15,3,Furnished,DLF Phase 1,1,1,0.8,9200000,35000
+Gurgaon,3,1500,8,20,1,Semi-Furnished,Golf Course Road,1,1,1.2,14500000,55000
+Noida,2,950,3,10,5,Unfurnished,Sector 62,0,1,2.1,6800000,22000
+Noida,3,1650,12,25,2,Furnished,Sector 137,1,1,0.5,13200000,48000
+Delhi,2,1000,2,6,8,Semi-Furnished,Dwarka,0,1,1.5,8500000,28000
