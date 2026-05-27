@@ -28,6 +28,9 @@ src/data/delhi_ncr/
 *.csv
 *.png
 
+# Whitelist test fixtures
+!tests/test_data/*.csv
+
 # Visual brainstorming sessions
 .superpowers/
 
