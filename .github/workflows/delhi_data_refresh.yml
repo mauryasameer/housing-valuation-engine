@@ -1,0 +1,71 @@
+name: Delhi NCR Monthly Data Refresh
+
+on:
+  schedule:
+    - cron: "0 20 1 * *"   # 1st of month, 2am IST (8:30pm UTC prev day)
+  workflow_dispatch:        # manual trigger
+
+jobs:
+  refresh:
+    name: Scrape, Retrain, PR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Scrape new listings
+        run: python scripts/scrape_delhi_ncr.py
+        continue-on-error: true
+
+      - name: Retrain updated regions
+        run: python scripts/train_delhi_ncr.py --only-updated
+
+      - name: Check for changed artifacts
+        id: changes
+        run: |
+          git diff --quiet models/delhi_ncr/ || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Create PR branch and commit artifacts
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          BRANCH="data/refresh-$(date +%Y-%m)"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add models/delhi_ncr/
+          git commit -m "chore: refresh Delhi NCR model artifacts $(date +%Y-%m)"
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "chore: Delhi NCR model refresh $(date +%Y-%m)" \
+            --body "Monthly automated model refresh. Scrape + retrain completed. Review and merge to update production models." \
+            --base dev \
+            --head "$BRANCH"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Open issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Delhi NCR refresh failed — ${new Date().toISOString().slice(0,7)}`,
+              body: `The monthly Delhi NCR data refresh workflow failed. Check the [workflow run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) for details.`,
+              labels: ["bug", "data-pipeline"]
+            })

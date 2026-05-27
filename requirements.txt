@@ -1,0 +1,28 @@
+# Data Manipulation & Viz
+pandas>=2.0.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Machine Learning & Stats
+scikit-learn>=1.3.0
+statsmodels>=0.14.0
+shap>=0.45.0
+joblib>=1.3.0
+
+# User Interface
+streamlit>=1.30.0
+
+# LLM Integration
+ollama>=0.2.0
+
+# Testing & Code Quality
+pytest>=8.0.0
+ruff==0.15.14
+
+# Delhi NCR Extension
+folium>=0.17.0
+streamlit-folium>=0.22.0
+httpx>=0.27.0
+beautifulsoup4>=4.12.0
+pyyaml>=6.0.0

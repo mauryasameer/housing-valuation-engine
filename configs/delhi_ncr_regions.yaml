@@ -1,0 +1,42 @@
+regions:
+  - name: Gurgaon
+    lat: 28.4595
+    lng: 77.0266
+    model_ready: true
+    localities:
+      - DLF Phase 1
+      - DLF Phase 2
+      - Sector 56
+      - Golf Course Road
+      - Sohna Road
+  - name: Noida
+    lat: 28.5355
+    lng: 77.3910
+    model_ready: true
+    localities:
+      - Sector 18
+      - Sector 62
+      - Sector 137
+      - Sector 150
+      - Greater Noida
+  - name: Delhi
+    lat: 28.6139
+    lng: 77.2090
+    model_ready: true
+    localities:
+      - Dwarka
+      - Rohini
+      - Saket
+      - Vasant Kunj
+      - Lajpat Nagar
+      - Janakpuri
+  - name: Faridabad
+    lat: 28.4089
+    lng: 77.3178
+    model_ready: false
+    localities: []
+  - name: Ghaziabad
+    lat: 28.6692
+    lng: 77.4538
+    model_ready: false
+    localities: []
