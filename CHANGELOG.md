@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-09-17
+
+### Added
+- Repository hero artwork for the README and social-preview use.
+
 ## [1.1.0] - 2026-05-25
 
 ### Added
@@ -40,3 +45,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Established **Cybersecurity** defenses (input sanitization, prompt injection safeguards, XSS output sanitization).
 - Developed a root-level Streamlit web dashboard (`app.py`) featuring real-time prediction, interactive SHAP waterfall explanations, and an MRM governance summary.
 - Moved research notebook into `notebooks/` directory.
+
+[1.1.1]: https://github.com/mauryasameer/housing-valuation-engine/compare/v1.1.0...v1.1.1
