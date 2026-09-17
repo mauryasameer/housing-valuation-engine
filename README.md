@@ -4,6 +4,8 @@
 [![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
+![Housing valuation decision-support visual](./assets/housing-valuation-hero.png)
+
 A production-grade real estate ML portal with two prediction experiences:
 
 - **🇺🇸 Ames, Iowa** — log-transformed LassoCV model with SHAP attributions, MRM diagnostics, and local LLM audit narratives
